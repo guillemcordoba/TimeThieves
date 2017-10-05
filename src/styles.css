@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+.fill {
+    width: 100%;
+    height: 100%;
+}
+
+html, body {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+  }
+  
+body {
+    background-color: #111111;
+}
+
+.plusone {
+    font-family: 'LCD_Solid';
+    color: orange;
+    font-size: 56px;
+}
+
+.matrix {
+    font-family: 'LCD_Solid';
+    color: #00FF00;
+    font-size: 128px;
+}
+
+@font-face {
+    font-family: 'LCD_Solid';
+    src: url('assets/LCD_Solid.ttf')  format('truetype');
+    font-weight: bold;
+}
