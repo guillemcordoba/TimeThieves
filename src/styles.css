@@ -17,13 +17,13 @@ body {
 .plusone {
     font-family: 'LCD_Solid';
     color: orange;
-    font-size: 86px;
+    font-size: 106px;
 }
 
 .matrix {
     font-family: 'LCD_Solid';
     color: #00FF00;
-    font-size: 168px;
+    font-size: 188px;
 }
 
 @font-face {
