@@ -10,12 +10,15 @@ app.on('ready', function() {
     // Change loadUrl to load index.html
     // using url and path package 
     // to format the file url
-    mainWindow.loadURL(url.format({
+    mainWindow.setMenu(null);
+    mainWindow.setFullScreen(true);
+    mainWindow.loadURL('http://localhost:4200');
+    /*mainWindow.loadURL(url.format({
         //__dirname is the current working dir
         pathname: path.join(__dirname, 'dist', 'index.html'),
         protocol: 'file:',
         slashes: true
-    }));
+    }));*/
 
     // It is useful to open dev tools
     // for debug.
@@ -24,7 +27,7 @@ app.on('ready', function() {
         mainWindow = null;
     });
 });
-
+  
 // Defines the behavior on close.
 app.on('window-all-closed', function() {
     app.quit();

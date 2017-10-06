@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electrondev": "concurrently -k \"ng serve\" \"electron .\""
+    "electrondev": "concurrently -k \"ng serve\" \"electron .\"",
+    "buildwindows": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=dist --version-string.CompanyName=CE --version-string.FileDescript ion=CE --version-string.ProductName=\"TimeThieves\""
   },
   "private": true,
   "dependencies": {
@@ -37,6 +38,8 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.1.1",
+    "electron": "^1.7.8",
+    "electron-packager": "^9.1.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",

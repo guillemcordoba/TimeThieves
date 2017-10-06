@@ -28,6 +28,13 @@ export class CountdownComponent implements OnInit {
       .takeWhile(() => this.running)
       .map(secondsPassed => this.minutes * 60 - secondsPassed)
       .takeWhile(secondsLeft => secondsLeft >= 0)
+      .do((secondsLeft) => {
+        if (secondsLeft < 60 || secondsLeft < 300 && secondsLeft % 4 === 0) {
+          this.playAudio('assets/alarm.mp3');
+        } else if (secondsLeft % 4 === 0) {
+          this.playAudio('assets/beep.mp3');
+        }
+      })
       .map(secondsLeft => secondsLeft * 1000 - 3600000);
 
       this.keyup$ = Observable.fromEvent(window, 'keyup');
@@ -35,4 +42,10 @@ export class CountdownComponent implements OnInit {
       this.keyup$.filter(event => event.keyCode === 100).subscribe(() => this.minutes--);
   }
 
+  playAudio(src: string) {
+    const audio = new Audio();
+    audio.src = src;
+    audio.load();
+    audio.play();
+  }
 }

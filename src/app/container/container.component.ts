@@ -4,7 +4,7 @@ import {
   ViewChild,
   Output,
   EventEmitter
-} from "@angular/core";
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/timer';
