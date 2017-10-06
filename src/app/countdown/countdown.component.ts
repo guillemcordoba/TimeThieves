@@ -18,17 +18,21 @@ export class CountdownComponent implements OnInit {
   @Input()
   minutes: number;
   keyup$: Observable<any>;
+  @Input()
+  running: boolean;
 
   constructor() { }
 
   ngOnInit() {
     this.countdown = Observable.interval(1000)
+      .takeWhile(() => this.running)
       .map(secondsPassed => this.minutes * 60 - secondsPassed)
+      .takeWhile(secondsLeft => secondsLeft >= 0)
       .map(secondsLeft => secondsLeft * 1000 - 3600000);
 
       this.keyup$ = Observable.fromEvent(window, 'keyup');
       this.keyup$.filter(event => event.keyCode === 102).subscribe(() => this.minutes++);
       this.keyup$.filter(event => event.keyCode === 100).subscribe(() => this.minutes--);
-    }
+  }
 
 }
