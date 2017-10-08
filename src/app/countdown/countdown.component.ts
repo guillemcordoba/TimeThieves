@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/fromEvent';
@@ -14,16 +14,20 @@ import 'rxjs/add/operator/merge';
 })
 export class CountdownComponent implements OnInit {
 
-  countdown: Observable<number>;
-  @Input()
-  minutes: number;
-  keyup$: Observable<any>;
+  hours: number;
+  mins: number;
+  seconds: number;
+  minutes: 90;
   @Input()
   running: boolean;
+  setup = true;
+  countdown: Observable<number>;
+  keyup$: Observable<any>;
 
   constructor() { }
 
   ngOnInit() {
+    // Setup countdown
     this.countdown = Observable.interval(1000)
       .takeWhile(() => this.running)
       .map(secondsPassed => this.minutes * 60 - secondsPassed)
@@ -36,10 +40,15 @@ export class CountdownComponent implements OnInit {
         }
       })
       .map(secondsLeft => secondsLeft * 1000 - 3600000);
+  }
 
-      this.keyup$ = Observable.fromEvent(window, 'keyup');
-      this.keyup$.filter(event => event.keyCode === 102).subscribe(() => this.minutes++);
-      this.keyup$.filter(event => event.keyCode === 100).subscribe(() => this.minutes--);
+  @HostListener('document:keyup', ['$event'])
+  onKeyUp(ev: KeyboardEvent) {
+    if (ev.keyCode === 37) {          // LEFT arrow pressed
+      this.minutes--;
+    } else if (ev.keyCode === 39) {   // RIGHT arrow pressed
+      this.minutes++;
+    }
   }
 
   playAudio(src: string) {

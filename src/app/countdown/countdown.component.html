@@ -1,3 +1,10 @@
-<h1 fxFlexFill class="matrix">
+<form *ngIf="setup" fxLayout="row" fxFlex="grow">
+    <input fxFlex="20%" class="matrix" type="number" [(ngModel)]="hours" focus>
+    <p class="matrix">:</p>
+    <input fxFlex="20%" class="matrix" type="number">
+    <p class="matrix">:</p>
+    <input fxFlex="20%" class="matrix" type="number">
+</form>
+<h1 *ngIf="!setup" fxFlex="grow" class="matrix">
     {{countdown | async | date: 'HH:mm:ss'}}
 </h1>

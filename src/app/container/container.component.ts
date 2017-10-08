@@ -3,7 +3,8 @@ import {
   OnInit,
   ViewChild,
   Output,
-  EventEmitter
+  EventEmitter,
+  HostListener
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
@@ -41,28 +42,18 @@ export class ContainerComponent implements OnInit {
   level = 0;
   plusone: boolean;
   @ViewChild('layout') canvasRef;
-  cheer1 = true;
   @Output()
-  batteryFilled = new EventEmitter();
+  containerFilled = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    const keyup$: Observable<any> = Observable.fromEvent(window, 'keyup');
-    keyup$.filter(event => event.keyCode === 104).filter(() => this.level < 100).subscribe(() => {
-      this.level += 1;
-      if (this.level === 100) {
-        this.batteryFilled.emit();
-      }
-      this.drawRectangle();
-    });
-    keyup$.filter(event => event.keyCode === 98).filter(() => this.level > 0).subscribe(() => {
-      this.level -= 1;
-      this.drawRectangle();
-    });
     this.drawRectangle();
 
-    keyup$.filter(event => event.keyCode === 104)
+    const keyup$: Observable<any> = Observable.fromEvent(window, 'keyup');
+
+    // Setup animation behaviour
+    keyup$.filter(event => event.keyCode === 38)
       .filter(() => this.level < 100)
       .do(() => {
         this.plusone = false;
@@ -75,10 +66,31 @@ export class ContainerComponent implements OnInit {
       .subscribe(() => this.plusone = false);
   }
 
+  @HostListener('document:keyup', ['$event'])
+  onKeyUp(ev:KeyboardEvent) {
+    if (ev.keyCode === 38) {          // UP arrow pressed
+      if (this.level < 100) {
+        // Increment level
+        this.level++;
+        // Draw new rectangle
+        this.drawRectangle();
+
+        // If the level is filled, emit the event
+        if (this.level === 100) {
+          this.containerFilled.emit();
+        }
+      }
+    } else if (ev.keyCode === 40) {   // DOWN arrow pressed
+      if (this.level > 0) {
+        this.level -= 1;
+        this.drawRectangle();
+      }
+    }
+  }
+
   playCheers() {
     const audio = new Audio();
-    audio.src = this.cheer1 ? 'assets/cheer1.mp3' : 'assets/cheer2.mp3';
-    this.cheer1 = !this.cheer1;
+    audio.src = 'assets/coin.mp3';
     audio.load();
     audio.play();
   }

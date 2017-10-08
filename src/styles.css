@@ -14,18 +14,6 @@ body {
     background-color: #111111;
 }
 
-.plusone {
-    font-family: 'LCD_Solid';
-    color: orange;
-    font-size: 106px;
-}
-
-.matrix {
-    font-family: 'LCD_Solid';
-    color: #00FF00;
-    font-size: 188px;
-}
-
 @font-face {
     font-family: 'LCD_Solid';
     src: url('assets/LCD_Solid.ttf')  format('truetype');
