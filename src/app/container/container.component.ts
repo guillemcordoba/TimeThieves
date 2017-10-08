@@ -4,8 +4,9 @@ import {
   ViewChild,
   Output,
   EventEmitter,
-  HostListener
-} from '@angular/core';
+  HostListener,
+  Input
+} from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/timer';
@@ -39,6 +40,8 @@ import { trigger, style, transition, animate, group } from '@angular/animations'
 })
 export class ContainerComponent implements OnInit {
 
+  @Input()
+  enabled: boolean;
   level = 0;
   plusone: boolean;
   @ViewChild('layout') canvasRef;
@@ -54,7 +57,7 @@ export class ContainerComponent implements OnInit {
 
     // Setup animation behaviour
     keyup$.filter(event => event.keyCode === 38)
-      .filter(() => this.level < 100)
+      .filter(() => this.level < 100 && this.enabled)
       .do(() => {
         this.plusone = false;
         setTimeout(() => {
@@ -67,7 +70,11 @@ export class ContainerComponent implements OnInit {
   }
 
   @HostListener('document:keyup', ['$event'])
-  onKeyUp(ev:KeyboardEvent) {
+  onKeyUp(ev: KeyboardEvent) {
+    if (!this.enabled) {
+      return;
+    }
+
     if (ev.keyCode === 38) {          // UP arrow pressed
       if (this.level < 100) {
         // Increment level

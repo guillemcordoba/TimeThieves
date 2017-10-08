@@ -7,7 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  runningCountdown = true;
+  runningCountdown = false;
+
+  startCountdown() {
+    this.runningCountdown = true;
+  }
 
   stopCountdown() {
     this.runningCountdown = false;

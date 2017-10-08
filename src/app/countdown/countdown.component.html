@@ -1,9 +1,12 @@
-<form *ngIf="setup" fxLayout="row" fxFlex="grow">
-    <input fxFlex="20%" class="matrix" type="number" [(ngModel)]="hours" focus>
-    <p class="matrix">:</p>
-    <input fxFlex="20%" class="matrix" type="number">
-    <p class="matrix">:</p>
-    <input fxFlex="20%" class="matrix" type="number">
+<form *ngIf="setup" fxLayout="column" fxLayoutAlign="center center" (ngSubmit)="initCountdown(setupForm)" #setupForm="ngForm">
+    <div fxLayout="row">
+        <input class="matrix" type="number" min="0" max="99" required [(ngModel)]="hours" name="hours" autofocus="true">
+        <p class="matrix">:</p>
+        <input class="matrix" type="number" min="0" max="60" required [(ngModel)]="mins" name="minutes">
+        <p class="matrix">:</p>
+        <input class="matrix" type="number" min="0" max="60" required [(ngModel)]="seconds" name="seconds">
+    </div>
+    <button type="submit" class="matrix" style="font-size: 6vw" [disabled]="!setupForm.form.valid">Start</button>
 </form>
 <h1 *ngIf="!setup" fxFlex="grow" class="matrix">
     {{countdown | async | date: 'HH:mm:ss'}}

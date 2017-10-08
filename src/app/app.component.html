@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div fxFlexFill fxLayoutAlign="center stretch" fxLayoutGap="5%" style="text-align:center">
-  <app-countdown fxFlexAlign="center" [running]="runningCountdown"></app-countdown>
-  <app-container (batteryFilled)="stopCountdown()"></app-container>
+<div fxFlexFill fxLayoutAlign="center stretch" fxLayoutGap="5%">
+  <app-countdown fxFlexAlign="center" [running]="runningCountdown" (startCountdown)="startCountdown()"></app-countdown>
+  <app-container [enabled]="runningCountdown" (batteryFilled)="stopCountdown()"></app-container>
 </div>
