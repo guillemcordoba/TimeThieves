@@ -1,6 +1,9 @@
 # TimeThieves
 
 Small configurable countdown app with a battery container to win points before the countdown ends.
+
+![alt text](https://github.com/guillemcordoba/TimeThieves/raw/master/src/assets/screenshot.png "Screenshot")
+
 Built with Angular and Electron.
 
 ## Setup
