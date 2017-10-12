@@ -1,12 +1,3 @@
-.matrix {
-    font-family: 'LCD_Solid';
-    color: #00FF00;
-    font-size: 10vw;
-    background-color: #111111;
-    border: none;
-    outline: none;    
-}
-
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;

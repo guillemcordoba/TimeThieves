@@ -6,7 +6,7 @@ import {
   EventEmitter,
   HostListener,
   Input
-} from "@angular/core";
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/timer';

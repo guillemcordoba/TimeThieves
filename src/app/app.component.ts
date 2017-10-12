@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,16 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   runningCountdown = false;
+  containerEnabled = true;
+
+  constructor() {}
+
+  @HostListener('document:keyup', ['$event'])
+  onKeyUp(ev: KeyboardEvent): void {
+    if (ev.keyCode === 27) {          // ESC arrow pressed
+      this.containerEnabled = !this.containerEnabled;
+    }
+  }
 
   startCountdown() {
     this.runningCountdown = true;
