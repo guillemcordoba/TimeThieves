@@ -42,6 +42,8 @@ export class ContainerComponent implements OnInit {
 
   @Input()
   enabled: boolean;
+  @Input()
+  locked: boolean;
   level = 0;
   plusone: boolean;
   @ViewChild('layout') canvasRef;
@@ -87,7 +89,7 @@ export class ContainerComponent implements OnInit {
           this.containerFilled.emit();
         }
       }
-    } else if (ev.keyCode === 40) {   // DOWN arrow pressed
+    } else if (ev.keyCode === 40 && !this.locked) {   // DOWN arrow pressed
       if (this.level > 0) {
         this.level -= 1;
         this.drawRectangle();

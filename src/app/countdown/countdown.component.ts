@@ -27,7 +27,7 @@ export class CountdownComponent implements OnInit {
   @Input()
   running: boolean;
   @Output()
-  startCountdown = new EventEmitter();
+  startCountdown = new EventEmitter<boolean>();
   hours: number;
   mins: number;
   seconds: number;
@@ -35,6 +35,7 @@ export class CountdownComponent implements OnInit {
   setup = true;
   countdown: Observable<number>;
   keyup$: Observable<any>;
+  locked: boolean;
 
   constructor() { }
 
@@ -63,11 +64,15 @@ export class CountdownComponent implements OnInit {
     })
     .map(secondsLeft => secondsLeft * 1000 - 3600000);
 
-    this.startCountdown.emit();
+    this.startCountdown.emit(this.locked);
   }
 
   @HostListener('document:keyup', ['$event'])
   onKeyUp(ev: KeyboardEvent): void {
+    if (this.locked) {
+      return;
+    }
+
     if (ev.keyCode === 37) {          // LEFT arrow pressed
       this.countdownSeconds -= 60;
     } else if (ev.keyCode === 39) {   // RIGHT arrow pressed

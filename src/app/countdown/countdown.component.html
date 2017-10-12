@@ -1,13 +1,19 @@
 <form *ngIf="setup" fxLayout="column" fxLayoutAlign="center center" (ngSubmit)="initCountdown(setupForm)" #setupForm="ngForm">
-    <div fxLayout="row" class="matrix big">
-        <input type="number" min="0" max="99" required [(ngModel)]="hours" name="hours" autofocus="true">
-        <p class="matrix">:</p>
-        <input class="matrix" type="number" min="0" max="60" required [(ngModel)]="mins" name="minutes">
-        <p class="matrix">:</p>
-        <input class="matrix" type="number" min="0" max="60" required [(ngModel)]="seconds" name="seconds">
+    <div fxLayout="row" style="height: 40vh;" fxLayoutAlign="center center">
+        <input type="number" class="matrix big" min="0" max="99" required [(ngModel)]="hours" name="hours" autofocus="true">
+        <p class="matrix big">:</p>
+        <input class="matrix big" type="number" min="0" max="60" required [(ngModel)]="mins" name="minutes">
+        <p class="matrix big">:</p>
+        <input class="matrix big" type="number" min="0" max="60" required [(ngModel)]="seconds" name="seconds">
     </div>
-    <button type="submit" class="matrix" style="font-size: 6vw" [disabled]="!setupForm.form.valid">Start</button>
+    <div fxLayout="row" fxLayoutGap="10%">
+        <button type="submit" class="matrix" style="font-size: 6vw" [disabled]="!setupForm.form.valid">Start</button>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <input type="checkbox" name="locked" id="lockedCheck" [(ngModel)]="locked">
+            <label for="lockedCheck" class="matrix" style="font-size: 2vw">Locked</label>
+        </div>
+    </div>
 </form>
-<h1 *ngIf="!setup" fxFlex="grow" class="matrix">
+<h1 *ngIf="!setup" fxFlex="grow" class="matrix big">
     {{countdown | async | date: 'HH:mm:ss'}}
 </h1>

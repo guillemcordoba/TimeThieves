@@ -9,17 +9,24 @@ export class AppComponent {
 
   runningCountdown = false;
   containerEnabled = true;
+  lockedContainer = false;
 
   constructor() {}
 
   @HostListener('document:keyup', ['$event'])
   onKeyUp(ev: KeyboardEvent): void {
+    if (this.lockedContainer) {
+      return;
+    }
+
     if (ev.keyCode === 27) {          // ESC arrow pressed
       this.containerEnabled = !this.containerEnabled;
     }
   }
 
-  startCountdown() {
+  startCountdown(locked: boolean) {
+    console.log(locked);
+    this.lockedContainer = locked;
     this.runningCountdown = true;
   }
 
