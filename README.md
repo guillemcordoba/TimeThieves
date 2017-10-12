@@ -7,8 +7,9 @@ Small configurable countdown app with a battery container to win points before t
 Built with Angular and Electron.
 
 ## Setup
-First, enter the time of the countdown, and press "Start". After that, the countdown will start and 
-the battery will be enabled to fill with points. 
+
+First, enter the time of the countdown, and press "Start". After that, the countdown will start and
+the battery will be enabled to fill with points.
 
 ## Controls
 
