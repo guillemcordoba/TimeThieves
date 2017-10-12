@@ -1,6 +1,6 @@
 # TimeThieves
 
-Small configurable countdown app with a battery container to win points before the countdown ends.
+Small but highly configurable countdown app with a battery container to win points before the countdown ends.
 
 ![alt text](https://github.com/guillemcordoba/TimeThieves/raw/master/src/assets/screenshot.png "Screenshot")
 
