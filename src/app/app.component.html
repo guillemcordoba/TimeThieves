@@ -1,11 +1,18 @@
 <div fxLayout="row" fxFlexFill fxLayoutAlign="center stretch" fxLayoutGap="5%">
   <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-    <app-countdown fxFlexAlign="center" [running]="runningCountdown" (startCountdown)="startCountdown($event)"></app-countdown>
+    <app-countdown fxFlexAlign="center" [running]="runningCountdown" 
+      (startCountdown)="startCountdown($event)" (lockedCheckedOutput)="setLockedChecked($event)"></app-countdown>
     <div *ngIf="!runningCountdown" fxFlexAlign="center" class="matrix" style="font-size: 1.5vw">
       <p>Input time and start timer</p>
-      <p>Enable/disable the battery with ESC</p>
-      <p>Control the time with LEFT & RIGHT arrow keys</p>
-      <p>Control the battery level with UP & DOWN arrow keys</p>  
+      <div *ngIf="!lockedChecked">
+        <p>Enable/disable the battery with ESC</p>
+        <p>Control the battery level with UP & DOWN arrow keys</p>  
+        <p>Control the time with LEFT & RIGHT arrow keys</p>
+      </div>
+      <div *ngIf="lockedChecked">
+        <p>Fill up the battery with UP arrow key</p>
+        <br/><br/><br/><br/>
+      </div>  
     </div>
   </div>
   <app-container *ngIf="containerEnabled" [enabled]="runningCountdown" [locked]="lockedContainer" (batteryFilled)="stopCountdown()"></app-container>

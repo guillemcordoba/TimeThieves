@@ -28,6 +28,8 @@ export class CountdownComponent implements OnInit {
   running: boolean;
   @Output()
   startCountdown = new EventEmitter<boolean>();
+  @Output()
+  lockedCheckedOutput = new EventEmitter<boolean>();
   hours: number;
   mins: number;
   seconds: number;
@@ -85,5 +87,10 @@ export class CountdownComponent implements OnInit {
     audio.src = src;
     audio.load();
     audio.play();
+  }
+
+  setLockedChecked(newValue: boolean) {
+    this.locked = newValue;
+    this.lockedCheckedOutput.emit(newValue);
   }
 }

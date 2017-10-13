@@ -1,16 +1,16 @@
 <form *ngIf="setup" fxLayout="column" fxLayoutAlign="center center" (ngSubmit)="initCountdown(setupForm)" #setupForm="ngForm">
-    <div fxLayout="row" style="height: 40vh;" fxLayoutAlign="center center">
+    <div fxLayout="row" style="height: 35vh;" fxLayoutAlign="center center">
         <input type="number" class="matrix big" min="0" max="99" required [(ngModel)]="hours" name="hours" autofocus="true">
         <p class="matrix big">:</p>
         <input class="matrix big" type="number" min="0" max="60" required [(ngModel)]="mins" name="minutes">
         <p class="matrix big">:</p>
         <input class="matrix big" type="number" min="0" max="60" required [(ngModel)]="seconds" name="seconds">
     </div>
-    <div fxLayout="row" fxLayoutGap="10%">
-        <button type="submit" class="matrix" style="font-size: 6vw" [disabled]="!setupForm.form.valid">Start</button>
-        <div fxLayout="row" fxLayoutAlign="center center" class="matrixCheckbox">
-            <input type="checkbox" name="locked" id="lockedCheck" [(ngModel)]="locked">
-            <label for="lockedCheck" class="matrix" style="font-size: 4vw">Locked</label>
+    <div fxLayout="column" fxLayoutGap="5%">
+        <button type="submit" class="matrix" style="font-size: 5vw" [disabled]="!setupForm.form.valid">Start</button>
+        <div fxLayout="row" fxLayoutGap="5%">
+            <button type="button" [ngClass]="{ underlined: !this.locked }" class="matrix" style="font-size: 3vw" (click)="setLockedChecked(false)">Unlocked</button>
+            <button type="button" [ngClass]="{ underlined: this.locked }" class="matrix" style="font-size: 3vw" (click)="setLockedChecked(true)">Locked</button>
         </div>
     </div>
 </form>

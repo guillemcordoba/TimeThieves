@@ -10,6 +10,7 @@ export class AppComponent {
   runningCountdown = false;
   containerEnabled = true;
   lockedContainer = false;
+  lockedChecked = false;
 
   constructor() {}
 
@@ -32,5 +33,10 @@ export class AppComponent {
 
   stopCountdown() {
     this.runningCountdown = false;
+  }
+
+
+  setLockedChecked(newValue: boolean) {
+    this.lockedChecked = newValue;
   }
 }
