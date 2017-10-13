@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electrondev": "concurrently -k \"ng serve\" \"electron .\"",
-    "package-windows": "electron-packager . TimeThieves --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescript ion=CE --version-string.ProductName=\"TimeThieves\"",
+    "package-windows": "ng build && electron-packager . TimeThieves --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescript ion=CE --version-string.ProductName=\"TimeThieves\"",
     "package-linux": "electron-packager . TimeThieves --overwrite --platform=linux --arch=x64 --icon=assets/icon.ico --prune=true --out=release-builds"
   },
   "private": true,
