@@ -1,7 +1,7 @@
 <div fxLayout="row" fxFlexFill fxLayoutAlign="center stretch" fxLayoutGap="5%">
   <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
     <app-countdown fxFlexAlign="center" [running]="runningCountdown" (startCountdown)="startCountdown($event)"></app-countdown>
-    <div *ngIf="!runningCountdown" fxFlexAlign="center" class="matrix">
+    <div *ngIf="!runningCountdown" fxFlexAlign="center" class="matrix" style="font-size: 1.5vw">
       <p>Input time and start timer</p>
       <p>Enable/disable the battery with ESC</p>
       <p>Control the time with LEFT & RIGHT arrow keys</p>

@@ -8,9 +8,9 @@
     </div>
     <div fxLayout="row" fxLayoutGap="10%">
         <button type="submit" class="matrix" style="font-size: 6vw" [disabled]="!setupForm.form.valid">Start</button>
-        <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="center center" class="matrixCheckbox">
             <input type="checkbox" name="locked" id="lockedCheck" [(ngModel)]="locked">
-            <label for="lockedCheck" class="matrix" style="font-size: 2vw">Locked</label>
+            <label for="lockedCheck" class="matrix" style="font-size: 4vw">Locked</label>
         </div>
     </div>
 </form>
