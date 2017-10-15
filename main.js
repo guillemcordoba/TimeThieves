@@ -6,7 +6,7 @@ url = require('url');
 // is initialized.
 app.on('ready', function() {
     console.log('Starting application!');
-    mainWindow = new BrowserWindow({ width: 1280, height: 960 });    
+    mainWindow = new BrowserWindow({ width: 1280, height: 960, show: false });    
     // Change loadUrl to load index.html
     // using url and path package 
     // to format the file url
@@ -19,6 +19,9 @@ app.on('ready', function() {
         protocol: 'file:',
         slashes: true
     }));
+    mainWindow.BrowserWindow.on('did-finish-load', function() {
+        mainWindow.show();
+    });
 
     // It is useful to open dev tools
     // for debug.
