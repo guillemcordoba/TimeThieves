@@ -19,7 +19,7 @@ app.on('ready', function() {
         protocol: 'file:',
         slashes: true
     }));
-    mainWindow.BrowserWindow.on('did-finish-load', function() {
+    mainWindow.webContents.on('did-finish-load', function() {
         mainWindow.show();
     });
 
