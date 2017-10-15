@@ -3,9 +3,9 @@
     <app-countdown fxFlexAlign="center" [running]="runningCountdown" 
       (startCountdown)="startCountdown($event)" (lockedCheckedOutput)="setLockedChecked($event)"></app-countdown>
     <div *ngIf="!runningCountdown" fxFlexAlign="center" class="matrix" style="font-size: 1.5vw">
-      <p>Input time and start timer</p>
+      <p>Input time and start timer or disable the countdown with C</p>
       <div *ngIf="!lockedChecked">
-        <p>Enable/disable the battery with ESC</p>
+        <p>Enable/disable the battery with B</p>
         <p>Control the battery level with UP & DOWN arrow keys</p>  
         <p>Control the time with LEFT & RIGHT arrow keys</p>
       </div>

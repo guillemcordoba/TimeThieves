@@ -38,6 +38,7 @@ export class CountdownComponent implements OnInit {
   countdown: Observable<number>;
   keyup$: Observable<any>;
   locked: boolean;
+  countdownShown = true;
 
   constructor() { }
 
@@ -54,7 +55,7 @@ export class CountdownComponent implements OnInit {
 
     // Setup countdown
     this.countdown = Observable.interval(1000).startWith(0)
-    .takeWhile(() => this.running && !this.setup)
+    .takeWhile(() => this.running && !this.setup && this.countdownShown)
     .map(secondsPassed => this.countdownSeconds - secondsPassed)
     .takeWhile(secondsLeft => secondsLeft >= 0)
     .do((secondsLeft) => {
@@ -71,6 +72,10 @@ export class CountdownComponent implements OnInit {
 
   @HostListener('document:keyup', ['$event'])
   onKeyUp(ev: KeyboardEvent): void {
+    if ((this.setup || !this.locked) && ev.keyCode === 67) { // C key pressed
+      this.countdownShown = !this.countdownShown;
+    }
+
     if (this.locked) {
       return;
     }

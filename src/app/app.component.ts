@@ -20,8 +20,9 @@ export class AppComponent {
       return;
     }
 
-    if (ev.keyCode === 27) {          // ESC arrow pressed
+    if (ev.keyCode === 66) {          // B arrow pressed
       this.containerEnabled = !this.containerEnabled;
+      console.log(this.containerEnabled);
     }
   }
 

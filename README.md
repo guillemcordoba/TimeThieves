@@ -11,11 +11,11 @@ Built with Angular and Electron.
 First, enter the time of the countdown, and press "Start". After that, the countdown will start and
 the battery will be enabled to fill with points.
 
-Note: if you start the countdown with the "Lock" label checked, all controls will be disabled except for the
-UP arrow key to fill the battery.
+Note: if you start the countdown with the "Lock" label checked, all controls will be disabled except for the UP arrow key to fill the battery.
 
 ## Controls
 
-* ESC: enable/disable the battery container
+* C: enable/disable the countdown
+* B: enable/disable the battery container
 * UP & DOWN arrow keys: control level of the battery
 * LEFT & RIGHT arrow keys: control the time of the countdown in case it has to be changed
