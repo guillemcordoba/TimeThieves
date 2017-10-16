@@ -19,3 +19,21 @@ Note: if you start the countdown with the "Lock" label checked, all controls wil
 * B: enable/disable the battery container
 * UP & DOWN arrow keys: control level of the battery
 * LEFT & RIGHT arrow keys: control the time of the countdown in case it has to be changed
+
+## Steps to run the code
+
+* To install dependencies:
+```
+npm install
+```
+
+* To run in development real-time update mode:
+```
+npm run electrondev
+```
+
+* To build the executable file:
+```
+npm run build
+```
+

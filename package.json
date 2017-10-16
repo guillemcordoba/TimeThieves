@@ -1,5 +1,7 @@
 {
-  "name": "time-thieves",
+  "name": "TimeThieves",
+  "description": "Small app to win points and race against a countdown",
+  "author": "Guillem Córdoba",
   "version": "1.0.0",
   "license": "MIT",
   "main": "main.js",
@@ -11,8 +13,39 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electrondev": "ng build && concurrently -k \"ng serve\" \"electron .\"",
-    "package-windows": "ng build && electron-packager . TimeThieves --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescript ion=CE --version-string.ProductName=\"TimeThieves\"",
-    "package-linux": "ng build && electron-packager . TimeThieves --overwrite --platform=linux --arch=x64 --icon=assets/icon.ico --prune=true --out=release-builds"
+    "dist": "ng build && build"
+  },
+  "build": {
+    "appId": "TimeThieves",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "portable",
+      "icon": "dist/assets/icon.ico"
+    },
+    "files": [
+      "*.js",
+      "dist",
+      "node_modules"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -40,6 +73,7 @@
     "@types/node": "~6.0.60",
     "codelyzer": "~3.1.1",
     "electron": "^1.7.8",
+    "electron-builder": "^19.37.2",
     "electron-packager": "^9.1.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",

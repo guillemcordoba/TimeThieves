@@ -25,7 +25,7 @@ app.on('ready', function() {
 
     // It is useful to open dev tools
     // for debug.
-    //mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
     mainWindow.on('closed', function() {
         mainWindow = null;
     });
